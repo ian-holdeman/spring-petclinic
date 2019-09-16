@@ -6,6 +6,7 @@
   <groupId>org.springframework.samples</groupId>
   <artifactId>spring-petclinic</artifactId>
   <version>2.1.0.BUILD-SNAPSHOT</version>
+  <packaging>war</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -111,7 +112,21 @@
   </dependencies>
 
   <build>
+    <finalName>petclinic</finalName>
     <plugins>
+     <plugin>
+         <groupId>org.apache.tomcat.maven</groupId>
+         <artifactId>tomcat7-maven-plugin</artifactId>
+         <version>2.2</version>
+         <configuration>
+         <server>tomcat-development-server</server>
+         <url>http://144.38.207.181:8080/manager/text</url>
+         <warFile>target\petclinic.war</warFile>
+         <path>/petclinic</path>
+         <username>admin</username>
+        <password>password1</password>
+         </configuration>
+     </plugin>  
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
